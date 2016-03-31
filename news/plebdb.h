@@ -11,10 +11,10 @@ public:
             _id = counter++;
         }
 
-    std::string& author();
-    std::string& title();
-    std::string& content();
-    int id();
+    std::string& author() { return _author; }
+    std::string& title() { return _title; }
+    std::string& content() { return _content; }
+    int id() { return _id; }
 private:
     std::string _author, _content, _title;
     int _id;
@@ -32,9 +32,9 @@ public:
     bool delete_article(int id);
     Article* find_article(int article_id);
 
-    int articles();
-    int id();
-    std::string name();
+    int articles() { return arts.size(); }
+    int id() { return group_id; }
+    std::string name() { return group_name; }
 private:
     std::vector<PlebArticle> arts;
     std::string group_name;
@@ -45,7 +45,7 @@ class PlebDB : public Database {
 public:
     PlebDB() {}
 
-    int newsgroups();
+    int newsgroups() { return groups.size(); }
     void list_newsgroups(std::function<void(NewsGroup*)> cb);
     NewsGroup* find_group(int id);
     bool create_newsgroup(const std::string& name);

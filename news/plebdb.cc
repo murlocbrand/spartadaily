@@ -1,10 +1,5 @@
 #include "plebdb.h"
 
-std::string& PlebArticle::title() { return _title; }
-std::string& PlebArticle::author() { return _author; }
-std::string& PlebArticle::content() { return _content; }
-int PlebArticle::id() { return _id; }
-
 void PlebNewsGroup::list_articles(std::function<void(Article*)> cb) {
     for (auto& art : arts)
         cb(&art);
@@ -25,10 +20,6 @@ bool PlebNewsGroup::delete_article(int id) {
     arts.erase(it);
     return true;
 }
-
-int PlebNewsGroup::id() { return group_id; }
-int PlebNewsGroup::articles() { return arts.size(); }
-std::string PlebNewsGroup::name() {  return group_name;  }
 
 Article* PlebNewsGroup::find_article(int article_id) {
     auto it = std::find_if(arts.begin(), arts.end(), [article_id](Article& art) {
@@ -68,11 +59,7 @@ NewsGroup* PlebDB::find_group(int id) {
     return it == groups.end() ? nullptr : &(*it);
 };
 
-
-int PlebDB::newsgroups() { return groups.size(); }
-
 void PlebDB::list_newsgroups(std::function<void(NewsGroup*)> cb) {
     for (auto& ng : groups)
         cb(&ng);
 }
-
