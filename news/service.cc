@@ -35,7 +35,7 @@ void Service::create_ng(Message& msg) {
 void Service::delete_ng(Message& msg) {
     // COM_DELETE_NG num_p COM_END
     // ANS_DELETE_NG [ANS_ACK | ANS_NAK ERR_NG_DOES_NOT_EXIST] ANS_END
-    int group_id = msg.num()
+    int group_id = msg.num();
 
     if (db->delete_newsgroup(group_id)) {
         msg << static_cast<unsigned char>(Protocol::ANS_ACK);
@@ -98,7 +98,6 @@ void Service::delete_art(Message& msg) {
         return;
     }
 
-    Article* art = ng->find_article(art_id);
     if (!ng->delete_article(art_id)) {
         msg << static_cast<unsigned char>(Protocol::ANS_NAK)
             << static_cast<unsigned char>(Protocol::ERR_ART_DOES_NOT_EXIST);
