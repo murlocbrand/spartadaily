@@ -2,13 +2,15 @@
 
 - reader requires `<ncurses.h>` (from ncurses-dev, libncurses-dev or similar)
 
-- `make` in repo to build required libs
-- `make` in repo/news to build server and reader
+- `make` in src to build
+- `make install` in src to put executables in bin
 
 ## server
-in-memory: `server <port>`
+in-memory: `$ ./archive <port>`
 
-disk-backed (soon^(tm)): `server <port> <db-dir>`
+disk-backed: 
+ 1) `$ mkdir dbdir`
+ 2) `$ ./archive <port> dbdir`
 
 ## reader
 usage: `reader <hostname> <port>`

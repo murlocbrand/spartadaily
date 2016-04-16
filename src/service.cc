@@ -1,10 +1,16 @@
 #include "service.h"
 #include "plebdb.h"
+#include "diskdb.h"
 #include "protocol.h"
 #include <iostream>
 using namespace std;
 
-Service::Service() : db(new PlebDB()) {}
+Service::Service(string path) {
+    if (path == "")
+        db = new PlebDB();
+    else
+        db = new DiskDB(path);
+}
 //Service::Service() : db(new DiskDatabase()) {}
 
 void Service::list_ng(Message& msg) {

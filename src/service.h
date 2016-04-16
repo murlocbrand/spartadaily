@@ -4,7 +4,7 @@
 
 class Service {
 public:
-    Service();
+    Service(string path = "");
 
     void list_ng(Message& msg);
     void create_ng(Message& msg);
