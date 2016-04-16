@@ -8,9 +8,9 @@
 ## server
 in-memory: `$ ./archive <port>`
 
-disk-backed: 
- 1) `$ mkdir dbdir`
- 2) `$ ./archive <port> dbdir`
+disk-backed:  
+ 1. `$ mkdir dbdir`
+ 2. `$ ./archive <port> dbdir`
 
 ## reader
 usage: `reader <hostname> <port>`
