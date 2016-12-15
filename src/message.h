@@ -5,6 +5,7 @@
 #include "connectionclosedexception.h"
 
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ Connection& operator<<(Connection& conn, string str);
 
 class Message {
 public:
-    Message(const std::shared_ptr<Connection>& conn) : line(conn) {};
+    Message(const shared_ptr<Connection>& conn) : line(conn) {};
 
     unsigned char byte();
     int num();
@@ -28,7 +29,7 @@ public:
     Message& operator<<(string&& str);
 
 private:
-    const std::shared_ptr<Connection>& line;
+    const shared_ptr<Connection>& line;
 };
 
 #endif

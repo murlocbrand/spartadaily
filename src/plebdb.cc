@@ -1,4 +1,5 @@
 #include "plebdb.h"
+#include <algorithm>
 
 void PlebNewsGroup::list_articles(std::function<void(Article*)> cb) {
     for (auto& art : arts)
@@ -57,7 +58,7 @@ NewsGroup* PlebDB::find_group(int id) {
         return ng.id() == id;
     });
     return it == groups.end() ? nullptr : &(*it);
-};
+}
 
 void PlebDB::list_newsgroups(std::function<void(NewsGroup*)> cb) {
     for (auto& ng : groups)
